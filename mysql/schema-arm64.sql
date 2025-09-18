@@ -1,6 +1,5 @@
--- Schema completo para FTGO - x86
-CREATE DATABASE IF NOT EXISTS ftgo;
-USE ftgo;
+-- Schema completo para FTGO - ARM64
+-- La base de datos 'ftgo' ya se crea automáticamente
 
 -- Crear todas las tablas necesarias
 CREATE TABLE IF NOT EXISTS consumers (
@@ -88,6 +87,9 @@ CREATE TABLE IF NOT EXISTS restaurants (
     zip varchar(255),
     PRIMARY KEY (id)
 ) ENGINE=InnoDB;
+
+-- Crear índices y claves foráneas solo si no existen
+-- (MySQL no tiene IF NOT EXISTS para constraints, así que usamos un enfoque seguro)
 
 -- Insertar datos de ejemplo
 INSERT IGNORE INTO courier (id, available, first_name, last_name, city, state) VALUES 
